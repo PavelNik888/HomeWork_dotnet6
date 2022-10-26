@@ -17,29 +17,29 @@ void InputCoefficients(){
   }
 }
 
-double[] Decision(double[,] coef)
+double[] CrossP(double[,] coef)
 {
   crossPoint[0] = (coef[1,1] - coef[0,1]) / (coef[0,0] - coef[1,0]);
   crossPoint[1] = crossPoint[0] * coef[0,0] + coef[0,1];
   return crossPoint;
 }
 
-void OutputResponse(double[,] coeff)
+void OutputResponse(double[,] coef)
 {
-  if (coeff[0,0] == coeff[1,0] && coeff[0,1] == coeff[1,1]) 
+  if (coef[0,0] == coef[1,0] && coef[0,1] == coef[1,1]) 
   {
     Console.Write($"\nПрямые совпадают");
   }
-  else if (coeff[0,0] == coeff[1,0] && coeff[0,1] != coeff[1,1]) 
+  else if (coef[0,0] == coef[1,0] && coef[0,1] != coef[1,1]) 
   {
     Console.Write($"\nПрямые параллельны");
   }
   else 
   {
-    Decision(coeff);
+    CrossP(coef);
     Console.Write($"\nТочка пересечения прямых: ({crossPoint[0]}, {crossPoint[1]})");
   }
 }
 
 InputCoefficients();
-OutputResponse(coeff);
+OutputResponse(coef);
